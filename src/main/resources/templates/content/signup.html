@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title th:utext="${title}"></title>
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+</head>
+<body>
+    <div align="center">
+        <div class="container">
+            <div class="container-fluid">
+                <div class="col-lg-6 col-lg-offset-6">
+                    <br/>
+                    <br/>
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>SignUp Form</h4>
+                        </div>
+                        <form th:object="${signupform}" th:action="@{/saveuser}" class="form-horizontal" method="post">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <input type="text" class="form-control" th:field="*{username}" placeholder="Username"/>
+                                <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}"> Username Invalid </p>
+                                <div style="clear: both; display: block; height: 10px;"></div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" th:field="*{studentnumber}" placeholder="Student Number"/>
+                                <p th:if="${#fields.hasErrors('studentnumber')}" th:errors="*{studentnumber}"> Student Number Invalid </p>
+                                <div style="clear: both; display: block; height: 10px;"></div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" th:field="*{firstname}" placeholder="first name"/>
+                                <p th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"> Firstname Invalid</p>
+                                <div style="clear: both; display: block; height: 10px;"></div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" th:field="*{lastname}" placeholder="lastname"/>
+                                <p th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"> Lastname Invalid</p>
+                                <div style="clear: both; display: block; height: 10px;"></div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" th:field="*{email}" placeholder="email"/>
+                                <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Invalid</p>
+                                <div style="clear: both; display: block; height: 10px;"></div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" th:field="*{department}" placeholder="Department"/>
+                                <p th:if="${#fields.hasErrors('department')}" th:errors="*{department}">Department Invalid</p>
+                                <div style="clear: both; display: block; height: 10px;"></div>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" th:field="*{password}" placeholder="password"/>
+                                <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Invalid</p>
+                                <div style="clear: both; display: block; height: 10px;"></div>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" th:field="*{passwordCheck}" placeholder="Confirm password"/>
+                                <p th:if="${#fields.hasErrors('passwordCheck')}" th:errors="*{passwordCheck}">Re Match Password Please</p>
+                                <div style="clear: both; display: block; height: 10px;"></div>
+                            </div>
+                        </div>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
