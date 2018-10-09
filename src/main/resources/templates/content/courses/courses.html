@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title th:utext="${title}"></title>
+    <!--lib-->
+    <script th:src="@{node_modules/jquery/dist/jquery.min.js}"></script>
+    <script th:src="@{node_modules/datatables.net/js/jquery.dataTables.js}"></script>
+    <script th:src="@{node_modules/datatables.net-bs4/js/dataTables.bootstrap4.js}"></script>
+    <link th:href="@{node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css}" rel="stylesheet"/>
+    <link th:href="@{css/bootstrap.css}" rel="stylesheet"/>
+    <link th:href="@{css/bootstrap.min.css}" rel="stylesheet"/>
+</head>
+<body>
+    <!--header-->
+    <div th:replace="fragments/header :: header"></div>
+    <div style="padding:60px 20px"></div>
+    <div class="container">
+        <h3 th:utext="${title}"></h3>
+        <div class="page-header">
+            <table class="table table-hover table-striped" id="courseTable">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Course</th>
+                        <th>Group</th>
+                        <th>Owner</th>
+                        <th>Actions</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

@@ -54,6 +54,7 @@ public class PageController {
 
                 User newUser = new User();
                 newUser.setPasswordHash(hashPwd);
+                newUser.setActive(true);
                 newUser.setUsername(signupForm.getUsername());
                 newUser.setRole("USER");
 
