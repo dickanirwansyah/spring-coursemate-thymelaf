@@ -6,6 +6,7 @@ import com.fusi24.springcoursemate.repository.StudentRepository;
 import com.fusi24.springcoursemate.repository.UserRepository;
 import com.fusi24.springcoursemate.request.SignUpForm;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.validation.Valid;
 
 @Controller
-public class PageController {
+public class UserController {
 
     /** page controller **/
     @Autowired
@@ -41,6 +42,15 @@ public class PageController {
         model.addAttribute("signupform", new SignUpForm());
         model.addAttribute("title", "SignUp Form");
         return "content/signup";
+    }
+
+    /** hak akses superuser**/
+    @PreAuthorize("hasAuthority('SUPERUSER')")
+    @GetMapping(value = "/signupteacher")
+    public String signUpTeacher(Model model){
+        model.addAttribute("signupform", new SignUpForm());
+        model.addAttribute("title", "Sign Up Teacher");
+        return "content/signup-teacher";
     }
 
     /** save user **/
