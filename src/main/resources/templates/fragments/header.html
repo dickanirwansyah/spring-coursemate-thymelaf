@@ -1,6 +1,6 @@
 <nav xmlns:th="http://www.thymeleaf.org" th:fragment="header"
     class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#">Online Course</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
             aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -22,6 +22,18 @@
                 sec:authorize="hasAuthority('SUPERUSER')">
                 <a class="nav-link" th:href="@{signupteacher}">Add Teachers</a>
             </li>
+            <li>
+                <a class="nav-link" th:href="@{/editProfile}">Edit Profile</a>
+            </li>
         </ul>
+        <th:block sec:authorize="isAuthenticated()">
+        <div class="form-inline my-2 my-lg-0">
+            <form th:action="@{/logout}" method="post">
+                <button type="submit" class="btn btn-outline-danger my-2 my-sm-0">
+                    Logout
+                </button>
+            </form>
+        </div>
+        </th:block>
     </div>
 </nav>

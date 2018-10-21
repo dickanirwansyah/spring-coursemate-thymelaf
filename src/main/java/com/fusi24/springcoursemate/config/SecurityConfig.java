@@ -25,6 +25,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
+
+    @Autowired
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception{
         auth.userDetailsService(customUserDetailsService)
@@ -42,7 +44,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/node_modules/**",
                         "/signup",
                         "/saveuser"
-                        )
+                        ).permitAll()
+                .antMatchers("/saveteacher").hasAuthority("SUPERUSER")
+                .anyRequest()
+                .authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .defaultSuccessUrl("/courses")
+                .permitAll()
+                .and()
+                .logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/login");
+
+                /**
                 .permitAll();
         httpSecurity
                 .authorizeRequests()
@@ -58,6 +74,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout()
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/login");
+                 **/
     }
 
 }

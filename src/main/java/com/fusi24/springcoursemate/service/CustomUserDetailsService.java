@@ -27,7 +27,8 @@ public class CustomUserDetailsService implements UserDetailsService {
         User user = userRepository.findByUsername(username);
 
         if (user == null){
-            throw new UsernameNotFoundException("Maaf user dengan username : "+username+" tidak ada");
+            throw new UsernameNotFoundException("Maaf user dengan username : "
+                    +username+" tidak ada");
         }
 
         String role = user.getRole();
